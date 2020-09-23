@@ -1,0 +1,22 @@
+def removeComments(source):
+    c_block, cur, r = False, [], []
+    for line in source:
+        i, N = 0, len(line)
+        while i < N:
+            if not c_block and i < N - 1 and line[i] == '/' and line[i + 1] == '/':
+                break
+            if not c_block and i < N - 1 and line[i] == '/' and line[i + 1] == '*':
+                c_block = True
+                i += 1
+            elif c_block and i < N - 1 and line[i] == '*' and line[i + 1] == '/':
+                c_block = False
+                i += 1
+            elif not c_block:
+                cur.append(line[i])
+            i += 1
+        if not c_block and cur:
+            r.append(''.join(cur))
+            cur.clear()
+    return r
+source = ["a/*comment", "line", "more_comment*/b"]
+print(removeComments(source))
