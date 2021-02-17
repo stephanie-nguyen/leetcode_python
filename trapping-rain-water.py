@@ -1,3 +1,8 @@
+'''
+Given n non-negative integers representing an elevation map where the width of each bar is 1, 
+compute how much water it can trap after raining.
+'''
+
 def maxWater(container, n) : 
     res = 0;  # To store the maximum water that can be stored
     for i in range(1, n - 1) :  # For every element of the array
