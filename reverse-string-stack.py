@@ -1,3 +1,11 @@
+'''
+Write a function that reverses a string. The input string is given as an array of characters char[].
+
+Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.
+
+You may assume all the characters consist of printable ascii characters.
+'''
+
 def createStack(): 
     stack=[] 
     return stack 
@@ -28,6 +36,5 @@ def reverse(string):        # stack based func to reverse a string
            
     return string 
   
-# Driver code 
 s = "stephanie"
 print (reverse(s))
