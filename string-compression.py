@@ -13,25 +13,22 @@ After you are done modifying the input array, return the new length of the array
 
 import pdb
 def compress(chars):
-    left = i = 0
-    while i < len(chars):
-        char = chars[i]
-        length = 1
-        #char, length = chars[i], 1
-        #pdb.set_trace()
-        while (i + 1) < len(chars) and char == chars[i + 1]:
-            length = length +1
-            i = i + 1
-            #length, i = length + 1, i + 1
-        chars[left] = char
-        if length > 1:
-            len_str = str(length)
-            chars[left + 1 : left + 1 + len(len_str)] = len_str
-            left += len(len_str)
-        left = left + 1
-        i = i + 1
-        #left, i = left + 1, i + 1
-    return left
+    compressedstring = ""
 
-chars = ["a","a","b","b","c","c","c"]
+    count = 1
+    for i in range(len(chars)-1): #why -1? end of the range cannot equal nothing "abcd" [0123] d cannot be compared to nothing in the next line
+        if chars[i] == chars[i+1]: #character youre looking at and the next character are equal
+            count += 1 
+        else:
+            compressedstring += chars[i] + str(count) #append to compressed string
+            count = 1
+            #pdb.set_trace()
+    compressedstring += chars[i+1] + str(count) #last value was ignored, this takes it into account
+
+    if len(compressedstring) >= len(chars):
+        return chars
+    else:
+        return compressedstring
+
+chars = "aabbbbccccbbba"
 print(compress(chars))
