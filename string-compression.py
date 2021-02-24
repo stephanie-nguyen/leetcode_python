@@ -16,8 +16,8 @@ def compress(chars):
     compressedstring = ""
 
     count = 1
-    for i in range(len(chars)-1): #why -1? end of the range cannot equal nothing "abcd" [0123] d cannot be compared to nothing in the next line
-        if chars[i] == chars[i+1]: #character youre looking at and the next character are equal
+    for i in range(len(chars)-1): #end of the range cannot equal nothing "abcd" [0123] d cannot be compared to nothing in the next line
+        if chars[i] == chars[i+1]: 
             count += 1 
         else:
             compressedstring += chars[i] + str(count) #append to compressed string
@@ -25,6 +25,7 @@ def compress(chars):
             #pdb.set_trace()
     compressedstring += chars[i+1] + str(count) #last value was ignored, this takes it into account
 
+    #in case our compressedstring is longer than the original string
     if len(compressedstring) >= len(chars):
         return chars
     else:
