@@ -15,7 +15,7 @@ def calcAngle(hour, minute):
     difference = abs(minute_angle-hour_angle)
     return min(difference, 360-difference)
 
-hour = 7
+hour = 10
 minute = 34
 print(calcAngle(hour,minute))
 

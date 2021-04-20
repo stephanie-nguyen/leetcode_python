@@ -1,0 +1,8 @@
+print('enter loan amount to pay back: ')
+x = int(input())
+print("in order to pay back in 3 years, with 10% interest, you need monthly payments of",(x+(x*0.)
+)//12)
+print("in order to pay back in 4 years, with 10% interest, you need monthly payments of",(x+(x*0.1)
+)//12)
+print("in order to pay back in 5 years, with 10% interest, you need monthly payments of",(x+(x*0.3)
+)//12)

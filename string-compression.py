@@ -25,13 +25,6 @@ def compress(chars):
             #pdb.set_trace()
     compressedstring += chars[i+1] + str(count) #last value was ignored, this takes it into account
     return max(compressedstring)
-    '''
-    #in case our compressedstring is longer than the original string
-    if len(compressedstring) >= len(chars):
-        return chars
-    else:
-        return compressedstring
-        '''
 
 chars = "abbbbaacc"
 print(compress(chars))
