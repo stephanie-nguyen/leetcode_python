@@ -1,0 +1,68 @@
+Step 1: Requirements clarifications
+Step 2: Back-of-the-envelope estimation
+Step 3: System interface definition
+Step 4: Defining data model
+Step 5: High-level design
+Step 6: Detailed design
+Step 7: Identifying and resolving bottlenecks
+
+Step 1: Requirements clarifications
+    1. Using actual example of designing a Twitter-like service, you would ned to ask questions similar to 
+        a. Can users post tweets and follow other users?
+        b. Should we also design to create and display the user's timeline?
+        c. Will tweets contain photos and videos?
+        d. Is the focus only backend, or front end as well?
+        e. Do we need to display trending topics?
+        f. Are there push notifications?
+
+Step 2: Back-of-the-envelope estimation
+    1. Estimate the scale so it helps later on when it comes to scaling. partitioning, load balancing and caching
+        a. What scale is expected from the system? (# of tweets, # of views, # of timeline generations/sec)
+        b. How much storage needed? (different amount of storage requirements if user can tweet pictures/ videos)
+        c. What network bandwidth usage is expected? (needed for balance loading between servers)
+
+Step 3: System interface definition
+    1. Define what APIs are expected (needed to establish contract expected from system and ensure if we haven't gotten any requirements wrong)
+        a. Examples include:
+            aa. postTweet(user_id, tweet_data, tweet_location, user_location, timestamp, ...)
+            bb. generateTimeline(user_id, current_time, user_location, ...)
+            cc. markTweetFavorite(user_id, tweet_id, timestamp, ...)
+
+Step 4: Defining data model
+    1. Define the data model will clarify how data flows betweens different system components
+    2. Identify various entities of system and how they will interact with each other, and different aspects of data management (including storage, transportation and encryption)
+        a. Examples for Twitter-like service example
+            aa. User:           UserID, Name, Email, DOB, CreationDate, LastLogin
+            bb. Tweet:          TweetID, Content, TweetLocation, NumberofLikes, timestamp
+            cc. UserFollow:     UserID1, UserID2
+            dd. FavoriteTweet:  UserID, TweetID, TimeStamp
+    3. Which database should we use? What kind of block storage should we use to store photos and videos?
+
+Step 5: High-level design
+    1. Draw and identify block diagram with 5-6 boxes that represent core components of our system
+    2. Identify enough components needed to solve actual problem end to end
+    3. Return to Twitter-like example
+        a. At high level, need multiple application servers to serve all read/write requests with load balancers in front of them for traffic distributions
+        b. For example, if we have more read than write traffic, can have separate servers that will handle those scenarios
+        c. For backend, we need database that can store all tweets and support large # of reads
+        d. Backend also needs distributed file storage system to store pictures and videos
+
+Step 6: Detailed design
+    1. Be able to present different approachs, pros and cons, why one preferred over the other
+    2. Consider tradeoffs between different options
+    3. Examples:
+        a. since we store large amount of data, how should we partition data to distribute it to multiple databases? 
+            aa. Should we store all data of user on same database and what issues will arise from that
+        b. How to handle popular users that tweet frequently or follow large amounts of people
+        c. Users' timeline contains most recent tweets, should we try to store data so it's optimized for scanning latest tweets?
+        d. How much and which layer should cache be intriduced to speed things up
+        What components need better load balancing?
+
+Step 7: Identifying and resolving bottlenecks
+    1. Discuss bottlenecsk and different approaches to mitigate them 
+        a. Ask questions including:
+            aa. Is there a single point of failure in the system? What are we doing to mitigate it?
+            bb. Do we have enough replicas of data so users can still be served in case some servers are lost?
+            cc. Do we have enough copies of different services that are running so that few failures won't cause the entire system to shut down?
+            dd. How is performance of the service monitored? Do we get alerts whenever critical components fail or performance falls below
+
