@@ -5,7 +5,7 @@ that, given a zero-indexed array A consisting of N integers representing the ini
 an array of integers representing their final test scores (in the same order).
 There uis a group of students sat next to eachother in a row. Each day, students study together and take a test at the end of 
 the day. Test scores for a given student can only change once per day as follows:
-    - If a student sits immediately between two students with bettter scores, that student's score will improve bby 1 when they 
+    - If a student sits immediately between two students with bettter scores, that student's score will improve by 1 when they 
     take the test.
     - If a student sits between two students with worse scores, that student's test score will decrease by 1.
 
@@ -16,6 +16,8 @@ Return an array representing the final test scores for each student once their s
 
 Example 1:
 Input: [1, 6, 3, 4, 3, 5]
+    -> [1, 5, 4, 3, 4, 5]
+    ->[1, 4, 4, 4, 4, 5]
 Returns: [1, 4, 4, 4, 4, 5]
 
 On the first day, the second students score will decrease, the third students schore will increase, the fourth students score 
@@ -33,20 +35,20 @@ You can assume that:
     - Student's scores are in the range from 0 to 1,000
 '''
 
-def solution(S):
-    B = A.copy()
-    changes = True
-    while changes: 
-        for x in range(1, len(A)-1):
-            if B[x-1] > B[x] and B[x+1] > B[x]:
-                A[x] += 1
-            if B[x-1] < B[x] and B[x+1] < B[x]:
-                A[x] -= 1
+def solution(A):
+    B = A.copy() #make a copy so we can compare it against A
+    gradechanges = True
+    while gradechanges: 
+        for i in range(1, len(A)-1):
+            if B[i-1] > B[i] and B[i+1] > B[i]:
+                A[i] += 1
+            if B[i-1] < B[i] and B[i+1] < B[i]:
+                A[i] -= 1
             if A==B:
-                changes = False
+                gradechanges = False
             else:
                 B=A.copy()
     return(A)
 
-S = [100, 50, 40, 30]
-print(solution(S))
+A = [1, 6, 3, 4, 3, 5]
+print(solution(A))

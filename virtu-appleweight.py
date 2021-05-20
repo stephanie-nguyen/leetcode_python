@@ -27,7 +27,7 @@ For an input of:
 You should return 3, as you could put in two 30-gram apples and the 50-gram apple.
 '''
 
-def solution(x):
+def solution(A):
     remaining = 5000-A[0]
     apples=A[1:]
     apples.sort()
@@ -39,5 +39,5 @@ def solution(x):
             return count -1
     return count
 
-x=[4850, 100, 30, 30, 100, 50, 100]
-print(solution(x))
+A=[4850, 100, 30, 30, 100, 50, 100]
+print(solution(A))

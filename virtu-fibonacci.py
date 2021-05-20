@@ -22,8 +22,8 @@ For x=1 and x=13 the function should return 0.
 def solution(x):
     a=b=1
     while 2+x > a+b:
-        a,b=b,a+b
+        a,b = b,a+b
     return x-a
 
-x=1
+x=13
 print(solution(x))
