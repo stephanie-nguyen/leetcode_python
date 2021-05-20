@@ -13,7 +13,7 @@ subtraction is used:
   
 Given a roman numeral, convert it to an integer.
 '''
-
+import pdb
 def romanToInt(s):
   m = {
     'I': 1,
@@ -34,6 +34,7 @@ def romanToInt(s):
   i = 0
   res = 0
   while i<len(s):
+    pdb.set_trace()
     if i+1 < len(s) and s[i:i+2] in m:
       res+=m[s[i:i+2]]
       i+=2

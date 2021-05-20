@@ -4,6 +4,7 @@ Given the head of a singly linked list, reverse the list, and return the reverse
 example 1: 
 1 -> 2 -> 3-> 4 -> 5 turns into 5 -> 4 -> 3 -> 2 -> 1
 '''
+
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
