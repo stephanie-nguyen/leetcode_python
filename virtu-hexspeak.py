@@ -18,11 +18,13 @@ If the input string is "3", it is written as 3 in hexadecimal, which does not re
 All answers should be in uppercase letters.
 '''
 
+import pdb
 def solution(S):
     def convert(n):
         numbers = []
         while n>0:
             numbers.append(n%16)
+            pdb.set_trace()
             n //= 16
         return numbers[::-1]
     converted = convert(int(S))

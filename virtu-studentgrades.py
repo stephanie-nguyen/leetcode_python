@@ -17,7 +17,7 @@ Return an array representing the final test scores for each student once their s
 Example 1:
 Input: [1, 6, 3, 4, 3, 5]
     -> [1, 5, 4, 3, 4, 5]
-    ->[1, 4, 4, 4, 4, 5]
+    -> [1, 4, 4, 4, 4, 5]
 Returns: [1, 4, 4, 4, 4, 5]
 
 On the first day, the second students score will decrease, the third students schore will increase, the fourth students score 
