@@ -27,7 +27,7 @@ def reverse(x):
     if x[0] == '-':
         x=-1*abs(int(x[:0:-1]))
     else:
-        x=abs(int(x[::-1]))
+        x=abs(int(x[::-1]))     #seq[start:end:step]
             
     if x < (-2)**31 or x > 2**31:
         x = 0
