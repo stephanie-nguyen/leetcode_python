@@ -17,18 +17,30 @@ For example, for an input of:
 [4650, 150, 150, 150]
 
 You should return 2, as the box already contains K=4650 grams of items, so only 2 more apples of weight 150 would fit 
-(bringing the total weight to 4950, still  below the capacity).
+(bringing the total weight to 4950, still below the capacity).
 
-For an input of: 
+For an input of:  
 [4850, 100, 30, 30, 100, 50, 100]
 You should return 3, as you could put in two 30-gram apples and the 50-gram apple.
+'''
+
+def solution(A):
+    apples_left = 5000-A[0] # A[0] is our current weight
+    apples = A[1:]
+    
+
+
+
+
+
+
 '''
 
 import pdb
 def solution(A):
     remaining = 5000-A[0]
     pdb.set_trace()
-    apples=A[1:]
+    apples=A[1:] #the first weight is the current capacity, isolate that so the weight of the apples will be contained in apples
     apples.sort()
     count=0
     for i in apples:
@@ -40,3 +52,4 @@ def solution(A):
 
 A=[4850, 100, 30, 30, 100, 50, 100]
 print(solution(A))
+'''
