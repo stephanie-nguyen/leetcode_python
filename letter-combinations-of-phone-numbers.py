@@ -18,11 +18,21 @@ To solve this, we will follow these steps −
     9. call solve(digits, characters, result, “”, 0)
 '''
 
+'''
 class Solution(object):
    def letterCombinations(self, digits):
       if len(digits) == 0:
          return []
-      characters = {2:"abc",3:"def",4:"ghi",5:"jkl",6:"mno",7:"pqrs",8:"tuv",9:"wxyz"}
+      characters = {
+         2:"abc",
+         3:"def",
+         4:"ghi",
+         5:"jkl",
+         6:"mno",
+         7:"pqrs",
+         8:"tuv",
+         9:"wxyz"
+      }
       result = []
       self.solve(digits,characters,result)
       return result
@@ -35,3 +45,32 @@ class Solution(object):
 
 ob1 = Solution()
 print(ob1.letterCombinations("379"))
+'''
+
+import pdb
+def letterCombinations(digits):
+   mapping = {
+      '2':['a','b','c'],
+      '3':['d','e','f'],
+      '4':['g','h','i'],
+      '5':['j','k','l'],
+      '6':['m','n','o'],
+      '7':['p','q','r','s'],
+      '8':['t','u','v'],
+      '9':['w','x','y','z'],
+   }
+   output = []
+        
+   def add(number, string):
+      if len(number)>1:
+            for i in mapping[number[0]]:
+               pdb.set_trace()
+               add(number[1:], string+i)
+      if len(number)==1:
+         for i in mapping[number]:
+            output.append(string+i)
+   add(digits,"")
+   return output
+
+digits="234"
+print(letterCombinations(digits))
